@@ -1,0 +1,24 @@
+
+*.o
+*.class
+*.pyc
+
+# Ignore build directories
+/build/
+/dist/
+
+# Ignore IDE files
+.idea/
+.vscode/
+
+# Ignore dependencies
+/node_modules/
+/vendor/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore compiled binaries
+/bin/
+/lib/
