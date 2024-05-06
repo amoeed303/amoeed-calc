@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "chalk": "^5.3.0",
-    "inquirer": "^9.2.20"
-  }
-  ,"bin":{
-    "MoeedCalc":"calculator.js"
-  
+    "inquirer": "^9.2.20",
+    "ts-node": "^10.9.2"
+  },
+  "bin": {
+    "MoeedCalc": "calculator.js"
   }
 }

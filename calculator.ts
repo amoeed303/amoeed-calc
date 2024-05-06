@@ -1,75 +1,63 @@
 #! /usr/bin/env node
-import  inquirer  from "inquirer";
+import inquirer from "inquirer";
+import chalk from "chalk"
+//input enter num:3
+//input operator:{+,-,*,/}
+//input enter num:4
+//input operator:{+,-,*,/}
+//input enter num:5
+//input equal:{=}
+//output: 3+4+5=12
 
+console.log(chalk.green("Welcome to the calculator!"));
+const calculator = async () => {
+  let result = 0;
+  let operator = "";
+  let num = 0;
+  let flag = true;
+  while (flag) {
+    const { num1 } = await inquirer.prompt({
+      type: "number",
+      name: "num1",
+      message: chalk.blue( "Enter number"),
+    });
+    num = num1;
+    const { operator1 } = await inquirer.prompt({
+      type: "list",
+      name: "operator1",
+      message: chalk.blue("Enter operator"),
+      choices: ["+", "-", "*", "/"],
+    });
+    operator = operator1;
+    const { equal } = await inquirer.prompt({
+      type: "list",
+      name: "equal",
+      message: "Enter equal",
+      choices: ["=", "exit"],
+    });
+    if (equal === "=") {
+      switch (operator) {
+        case "+":
+          result += num;
+          break;
+        case "-":
+          result -= num;
+          break;
+        case "*":
+          result *= num;
+          break;
+        case "/":
+              result /= num;
+              
 
-async function calculate() {
-    const answer = await inquirer.prompt([{
-        message: "Enter first number",
-        type: "number",
-        name: "firstNumber"
-    }]);
-    console.log(answer.firstNumber);
-}
+          break;
+      }
+      console.log(chalk.green(result));
+    } else {
+      console.log(chalk.green(result));
+      flag = false;
+    }
+  }
+};
+calculator();
 
-calculate();
-
-console.log("Hello World"); 
-// let Calculation = async () => {
-//   //  console.log(figlet.textSync("CALCULATOR"));
-//     let CalculationData = await inquirer.prompt([
-//         //First Number Block
-//         {
-//             name: "Value1",
-//             type: "number",
-//             message: chalk.green("Please Enter Your First Number: "),
-//         },
-//         //Second Number Block
-//         {
-//             name: "Value2",
-//             type: "number",
-//             message: chalk.green("Please Enter Your Second Number: "),
-//         },
-//         //Operations List block
-//         {
-//             name: "Operation",
-//             type: "number",
-//             message: chalk.green("Press 1 For Addition (+):  \n Press 2 For Subtraction(-): \n Press 3 for Division(÷): \n Press 4 For Multiplication(x): \n Press 5 For Modulo(%): \n Please Select An Operation From 1 to 5: ")
-//         },
-//     ]);
-//     switch (CalculationData.Operation) {
-//         case 1:
-//             console.log(chalk.green(`The Answer Of ${CalculationData.Value1} + ${CalculationData.Value2} is = ${CalculationData.Value1 + CalculationData.Value2}`));
-//             break;
-//         case 2:
-//             console.log(chalk.green(`The Answer Of ${CalculationData.Value1} - ${CalculationData.Value2} is = ${CalculationData.Value1 - CalculationData.Value2}`));
-//             break;
-//         case 3:
-//             console.log(chalk.green(`The Answer Of ${CalculationData.Value1} ÷ ${CalculationData.Value2} is = ${CalculationData.Value1 / CalculationData.Value2}`));
-//             break;
-//         case 4:
-//             console.log(chalk.green(`The Answer Of ${CalculationData.Value1} x ${CalculationData.Value2} is = ${CalculationData.Value1 * CalculationData.Value2}`));
-//             break;
-//         case 5:
-//             console.log(chalk.green(`The Answer Of ${CalculationData.Value1} % ${CalculationData.Value2} is = ${CalculationData.Value1 % CalculationData.Value2}`));
-//             break;
-//         default:
-//             console.log(chalk.green("Your Input Is Incorrect"));
-//             break;
-//     }
-// };
-// //Main Function
-// let main = async () => {
-//     do {
-//         await Calculation();
-//         var repeateCalculation = await inquirer.prompt([
-//             {
-//                 name: "repeat",
-//                 type: "string",
-//                 message: "Do You want to perform calculation again? Y/N : ",
-//             },
-//         ]);
-//     } while (repeateCalculation.repeate == "Y" || repeateCalculation.repeate == "y");
-// };
-// //Calling Main Function
-// main();
- 
